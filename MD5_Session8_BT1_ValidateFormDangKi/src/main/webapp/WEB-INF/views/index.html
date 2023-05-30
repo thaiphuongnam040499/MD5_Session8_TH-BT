@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<form action="/createUser" method="post" th:object="${user}">
+    <div>
+        <label>First Name</label>
+        <input type="text" name="firstName" th:field="*{firstName}">
+        <span style="color: red" th:if="${#fields.hasErrors('firstName')}">Firstname bắt buộc, có độ dài tối thiểu 5, tối đa 45 ký tự</span>
+    </div>
+    <div>
+        <label>Last Name</label>
+        <input type="text" name="lastName" th:field="*{lastName}">
+        <span style="color: red" th:if="${#fields.hasErrors('lastName')}">LastName bắt buộc, có độ dài tối thiểu 5, tối đa 45 ký tự</span>
+    </div><div>
+        <label>Age</label>
+        <input type="text" name="age" th:field="*{age}">
+    <span style="color: red" th:if="${#fields.hasErrors('age')}">Bạn phải trên 18 tuổi</span>
+</div>
+    <div>
+        <label>Phone Number</label>
+        <input type="text" name="phoneNumber" th:field="*{phoneNumber}">
+        <span style="color: red" th:if="${#fields.hasErrors('phoneNumber')}">Số điện thoại phải bắt đầu bằng số 0 và đủ 10 số</span>
+    </div>
+    <div>
+        <label>Email</label>
+        <input type="email" name="email" th:field="*{email}">
+        <span style="color: red" th:if="${#fields.hasErrors('email')}">Email không đúng định dạng</span>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
